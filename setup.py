@@ -3,12 +3,18 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setuptools.setup(
     name="jelly-fpga-client",
     version="0.0.2",
-    install_requires=[
-        "requests",
-    ],
+    install_requires=requirements,
+    entry_points={
+        'console_scripts': [
+            'jelly_fpga_client=jelly_fpga_client:main',
+        ],
+    },
     author="Ryuji Fuchikami",
     author_email="ryuji.fuchikami@nifty.com",
     description="fpga control client",
