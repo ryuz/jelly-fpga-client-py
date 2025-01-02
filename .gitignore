@@ -1,6 +1,10 @@
+*.egg-info
+
 _*
 *_
 *_.*
+!__init__.py
+
 
 *.bit
 *.bin
