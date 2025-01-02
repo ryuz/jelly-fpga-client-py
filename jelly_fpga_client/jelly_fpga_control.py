@@ -23,8 +23,8 @@ class JellyFpgaControl:
         response = self.stub.Load(jelly_fpga_control_pb2.LoadRequest(name=name))
         return response.result
 
-    def unload(self):
-        response = self.stub.Unload(jelly_fpga_control_pb2.UnloadRequest())
+    def unload(self, slot=0):
+        response = self.stub.Unload(jelly_fpga_control_pb2.UnloadRequest(slot=slot))
         return response.result
 
     def upload_firmware(self, name, data, chunk_size=2*1024*1024):
