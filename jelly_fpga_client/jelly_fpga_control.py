@@ -70,12 +70,24 @@ class JellyFpgaControl:
         if not response.result:
             return None
         return response.id
-    
+
+    def open_uio(self, name, unit=0):
+        response = self.stub.OpenUio(jelly_fpga_control_pb2.OpenUioRequest(name=name, unit=unit))
+        if not response.result:
+            return None
+        return response.id
+
+    def open_udmabuf(self, name, cache_enable=False, unit=0):
+        response = self.stub.OpenUdmabuf(jelly_fpga_control_pb2.OpenUdmabufRequest(name=name, cache_enable=cache_enable, unit=unit))
+        if not response.result:
+            return None
+        return response.id
+
     def close(self, id):
         response = self.stub.Close(jelly_fpga_control_pb2.CloseRequest(id=id))
         return response.result
 
-    def write_mem_u(self, id, offset, data, size):
+    def write_mem_u(self, id, offset, data, size=0):
         response = self.stub.WriteMemU(jelly_fpga_control_pb2.WriteMemURequest(id=id, offset=offset, data=data, size=size))
         return response.result
 
@@ -90,3 +102,123 @@ class JellyFpgaControl:
 
     def write_mem_u64(self, id, offset, data):
         return self.write_mem_u(id, offset, data, 8)
+
+    def write_mem_i(self, id, offset, data, size=0):
+        response = self.stub.WriteMemI(jelly_fpga_control_pb2.WriteMemIRequest(id=id, offset=offset, data=data, size=size))
+        return response.result
+
+    def write_mem_i8(self, id, offset, data):
+        return self.write_mem_i(id, offset, data, 1)
+
+    def write_mem_i16(self, id, offset, data):
+        return self.write_mem_i(id, offset, data, 2)
+
+    def write_mem_i32(self, id, offset, data):
+        return self.write_mem_i(id, offset, data, 4)
+
+    def write_mem_i64(self, id, offset, data):
+        return self.write_mem_i(id, offset, data, 8)
+
+    def read_mem_u(self, id, offset, size=0):
+        response = self.stub.ReadMemU(jelly_fpga_control_pb2.ReadMemRequest(id=id, offset=offset, size=size))
+        if not response.result:
+            return None
+        return response.data
+    
+    def read_mem_u8(self, id, offset):
+        return self.read_mem_u(id, offset, 1)
+    
+    def read_mem_u16(self, id, offset):
+        return self.read_mem_u(id, offset, 2)
+    
+    def read_mem_u32(self, id, offset):
+        return self.read_mem_u(id, offset, 4)
+    
+    def read_mem_u64(self, id, offset):
+        return self.read_mem_u(id, offset, 8)
+    
+    def read_mem_i(self, id, offset, size=0):
+        response = self.stub.ReadMemI(jelly_fpga_control_pb2.ReadMemRequest(id=id, offset=offset, size=size))
+        if not response.result:
+            return None
+        return response.data
+    
+    def read_mem_i8(self, id, offset):
+        return self.read_mem_i(id, offset, 1)
+    
+    def read_mem_i16(self, id, offset):
+        return self.read_mem_i(id, offset, 2)
+    
+    def read_mem_i32(self, id, offset):
+        return self.read_mem_i(id, offset, 4)
+    
+    def read_mem_i64(self, id, offset):
+        return self.read_mem_i(id, offset, 8)
+    
+    def write_reg_u(self, id, reg, data, size=0):
+        response = self.stub.WriteRegU(jelly_fpga_control_pb2.WriteRegURequest(id=id, reg=reg, data=data, size=size))
+        return response.result
+    
+    def write_reg_u8(self, id, reg, data):
+        return self.write_reg_u(id, reg, data, 1)
+    
+    def write_reg_u16(self, id, reg, data):
+        return self.write_reg_u(id, reg, data, 2)
+    
+    def write_reg_u32(self, id, reg, data):
+        return self.write_reg_u(id, reg, data, 4)
+    
+    def write_reg_u64(self, id, reg, data):
+        return self.write_reg_u(id, reg, data, 8)
+    
+    def write_reg_i(self, id, reg, data, size=0):
+        response = self.stub.WriteRegI(jelly_fpga_control_pb2.WriteRegIRequest(id=id, reg=reg, data=data, size=size))
+        return response.result
+    
+    def write_reg_i8(self, id, reg, data):
+        return self.write_reg_i(id, reg, data, 1)
+    
+    def write_reg_i16(self, id, reg, data):
+        return self.write_reg_i(id, reg, data, 2)
+    
+    def write_reg_i32(self, id, reg, data):
+        return self.write_reg_i(id, reg, data, 4)
+    
+    def write_reg_i64(self, id, reg, data):
+        return self.write_reg_i(id, reg, data, 8)
+
+    def read_reg_u(self, id, reg, size=0):
+        response = self.stub.ReadRegU(jelly_fpga_control_pb2.ReadRegRequest(id=id, reg=reg, size=size))
+        if not response.result:
+            return None
+        return response.data
+    
+    def read_reg_u8(self, id, reg):
+        return self.read_reg_u(id, reg, 1)
+    
+    def read_reg_u16(self, id, reg):
+        return self.read_reg_u(id, reg, 2)
+    
+    def read_reg_u32(self, id, reg):
+        return self.read_reg_u(id, reg, 4)
+    
+    def read_reg_u64(self, id, reg):
+        return self.read_reg_u(id, reg, 8)
+    
+    def read_reg_i(self, id, reg, size=0):
+        response = self.stub.ReadRegI(jelly_fpga_control_pb2.ReadRegRequest(id=id, reg=reg, size=size))
+        if not response.result:
+            return None
+        return response.data
+    
+    def read_reg_i8(self, id, reg):
+        return self.read_reg_i(id, reg, 1)
+    
+    def read_reg_i16(self, id, reg):
+        return self.read_reg_i(id, reg, 2)
+    
+    def read_reg_i32(self, id, reg):
+        return self.read_reg_i(id, reg, 4)
+    
+    def read_reg_i64(self, id, reg):
+        return self.read_reg_i(id, reg, 8)
