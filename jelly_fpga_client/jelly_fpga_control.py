@@ -89,6 +89,24 @@ class JellyFpgaControl:
             return None
         return response.id
 
+    def get_addr(self, id):
+        response = self.stub.GetAddr(jelly_fpga_control_pb2.GetAddrRequest(id=id))
+        if not response.result:
+            return None
+        return response.addr
+
+    def get_size(self, id):
+        response = self.stub.GetSize(jelly_fpga_control_pb2.GetSizeRequest(id=id))
+        if not response.result:
+            return None
+        return response.size
+
+    def get_phys_addr(self, id):
+        response = self.stub.GetPhysAddr(jelly_fpga_control_pb2.GetPhysAddrRequest(id=id))
+        if not response.result:
+            return None
+        return response.phys_addr
+
     def close(self, id):
         response = self.stub.Close(jelly_fpga_control_pb2.CloseRequest(id=id))
         return response.result

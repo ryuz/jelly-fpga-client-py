@@ -102,7 +102,22 @@ class JellyFpgaControlStub(object):
         self.Subclone = channel.unary_unary(
                 '/jelly_fpga_control.JellyFpgaControl/Subclone',
                 request_serializer=jelly__fpga__control__pb2.SubcloneRequest.SerializeToString,
-                response_deserializer=jelly__fpga__control__pb2.OpenResponse.FromString,
+                response_deserializer=jelly__fpga__control__pb2.SubcloneResponse.FromString,
+                _registered_method=True)
+        self.GetAddr = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/GetAddr',
+                request_serializer=jelly__fpga__control__pb2.GetAddrRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.GetAddrResponse.FromString,
+                _registered_method=True)
+        self.GetSize = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/GetSize',
+                request_serializer=jelly__fpga__control__pb2.GetSizeRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.GetSizeResponse.FromString,
+                _registered_method=True)
+        self.GetPhysAddr = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/GetPhysAddr',
+                request_serializer=jelly__fpga__control__pb2.GetPhysAddrRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.GetPhysAddrResponse.FromString,
                 _registered_method=True)
         self.WriteMemU = channel.unary_unary(
                 '/jelly_fpga_control.JellyFpgaControl/WriteMemU',
@@ -278,6 +293,24 @@ class JellyFpgaControlServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Subclone(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetAddr(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetSize(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetPhysAddr(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -462,7 +495,22 @@ def add_JellyFpgaControlServicer_to_server(servicer, server):
             'Subclone': grpc.unary_unary_rpc_method_handler(
                     servicer.Subclone,
                     request_deserializer=jelly__fpga__control__pb2.SubcloneRequest.FromString,
-                    response_serializer=jelly__fpga__control__pb2.OpenResponse.SerializeToString,
+                    response_serializer=jelly__fpga__control__pb2.SubcloneResponse.SerializeToString,
+            ),
+            'GetAddr': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAddr,
+                    request_deserializer=jelly__fpga__control__pb2.GetAddrRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.GetAddrResponse.SerializeToString,
+            ),
+            'GetSize': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSize,
+                    request_deserializer=jelly__fpga__control__pb2.GetSizeRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.GetSizeResponse.SerializeToString,
+            ),
+            'GetPhysAddr': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPhysAddr,
+                    request_deserializer=jelly__fpga__control__pb2.GetPhysAddrRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.GetPhysAddrResponse.SerializeToString,
             ),
             'WriteMemU': grpc.unary_unary_rpc_method_handler(
                     servicer.WriteMemU,
@@ -932,7 +980,88 @@ class JellyFpgaControl(object):
             target,
             '/jelly_fpga_control.JellyFpgaControl/Subclone',
             jelly__fpga__control__pb2.SubcloneRequest.SerializeToString,
-            jelly__fpga__control__pb2.OpenResponse.FromString,
+            jelly__fpga__control__pb2.SubcloneResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAddr(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/GetAddr',
+            jelly__fpga__control__pb2.GetAddrRequest.SerializeToString,
+            jelly__fpga__control__pb2.GetAddrResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSize(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/GetSize',
+            jelly__fpga__control__pb2.GetSizeRequest.SerializeToString,
+            jelly__fpga__control__pb2.GetSizeResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetPhysAddr(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/GetPhysAddr',
+            jelly__fpga__control__pb2.GetPhysAddrRequest.SerializeToString,
+            jelly__fpga__control__pb2.GetPhysAddrResponse.FromString,
             options,
             channel_credentials,
             insecure,

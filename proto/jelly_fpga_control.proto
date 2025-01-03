@@ -19,7 +19,10 @@ service JellyFpgaControl {
     rpc OpenUio      (OpenUioRequest)     returns (OpenResponse);
     rpc OpenUdmabuf  (OpenUdmabufRequest) returns (OpenResponse);
     rpc Close        (CloseRequest)       returns (BoolResponse);
-    rpc Subclone     (SubcloneRequest)    returns (OpenResponse);
+    rpc Subclone     (SubcloneRequest)    returns (SubcloneResponse);
+    rpc GetAddr      (GetAddrRequest)     returns (GetAddrResponse);
+    rpc GetSize      (GetSizeRequest)     returns (GetSizeResponse);
+    rpc GetPhysAddr  (GetPhysAddrRequest) returns (GetPhysAddrResponse);
 
     rpc WriteMemU    (WriteMemURequest)   returns (BoolResponse);
     rpc WriteMemI    (WriteMemIRequest)   returns (BoolResponse);
@@ -134,6 +137,38 @@ message SubcloneRequest {
     uint64 offset = 2;
     uint64 size = 3;
     uint64 unit = 4;
+}
+
+message SubcloneResponse {
+    bool  result = 1;
+    uint32 id = 2;
+}
+
+message GetAddrRequest {
+    uint32 id = 1;
+}
+
+message GetAddrResponse {
+    bool  result = 1;
+    uint64 addr = 2;
+}
+
+message GetSizeRequest {
+    uint32 id = 1;
+}
+
+message GetSizeResponse {
+    bool  result = 1;
+    uint64 size = 2;
+}
+
+message GetPhysAddrRequest {
+    uint32 id = 1;
+}
+
+message GetPhysAddrResponse {
+    bool  result = 1;
+    uint64 phys_addr = 2;
 }
 
 message WriteMemURequest {

@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="jelly-fpga-client",
-    version="0.0.2",
+    version="0.0.4",
     install_requires=requirements,
     entry_points={
         'console_scripts': [

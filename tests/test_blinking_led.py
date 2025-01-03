@@ -1,7 +1,13 @@
+import sys
+import time
 from jelly_fpga_client import jelly_fpga_control
 
-ftga_ctl = jelly_fpga_control.JellyFpgaControl("10.72.141.82:50051")
-ftga_ctl.reset()
+#%%
+# コマンドライン引数で指定した IP アドレスに接続
+target = sys.argv[1]
+print("target:", target)
+fpga_ctl = jelly_fpga_control.JellyFpgaControl(target)
+fpga_ctl.reset()
 
 dts = """\
 /dts-v1/; /plugin/;
@@ -33,41 +39,37 @@ dts = """\
 """
 
 # DTBに変換して firmware としてアップロード
-dtb = ftga_ctl.dts_to_dtb(dts)
-ftga_ctl.upload_firmware("kv260_blinking_led_ps.dtbo", dtb)
+dtb = fpga_ctl.dts_to_dtb(dts)
+fpga_ctl.upload_firmware("kv260_blinking_led_ps.dtbo", dtb)
 
 #%%
 # bitstreamファイルをアップロード
-ftga_ctl.upload_firmware_file("kv260_blinking_led_ps.bit", "./kv260_blinking_led_ps.bit")
+fpga_ctl.upload_firmware_file("kv260_blinking_led_ps.bit", "./kv260_blinking_led_ps.bit")
 # アップロードした bitstream ファイルを bin ファイルに変換
-ftga_ctl.bitstream_to_bin("kv260_blinking_led_ps.bit", "kv260_blinking_led_ps.bit.bin", "zynqmp")
+fpga_ctl.bitstream_to_bin("kv260_blinking_led_ps.bit", "kv260_blinking_led_ps.bit.bin", "zynqmp")
 
 #%%
-ftga_ctl.unload()
-ftga_ctl.load_dtbo("kv260_blinking_led_ps.dtbo")
+fpga_ctl.unload()
+fpga_ctl.load_dtbo("kv260_blinking_led_ps.dtbo")
 
 #%%
 # /dev/mem を mmap して LED0 を点滅させる
-import time
-accessor = ftga_ctl.open_mmap("/dev/mem", 0xa0000000, 0x1000)
+accessor = fpga_ctl.open_mmap("/dev/mem", 0xa0000000, 0x1000)
 for _ in range(3):
-    ftga_ctl.write_mem_u64(accessor, 0, 1) # LED0 ON
+    fpga_ctl.write_mem_u64(accessor, 0, 1) # LED0 ON
     time.sleep(0.5)
-    ftga_ctl.write_mem_u64(accessor, 0, 0) # LED0 OFF
+    fpga_ctl.write_mem_u64(accessor, 0, 0) # LED0 OFF
     time.sleep(0.5)
 
+#%%
 # close
-ftga_ctl.close(accessor)
+fpga_ctl.close(accessor)
+
+# 後始末
+fpga_ctl.remove_firmware("kv260_blinking_led_ps.dtbo")
+fpga_ctl.remove_firmware("kv260_blinking_led_ps.bit")
+fpga_ctl.remove_firmware("kv260_blinking_led_ps.bit.bin")
 
 
-#ftga_ctl.load_dtbo("kv260_sample_led0.dtbo")
-#ftga_ctl.load("kv260_sample_led0")
-
-ftga_ctl.remove_firmware("kv260_blinking_led_ps.dtbo")
-ftga_ctl.remove_firmware("kv260_blinking_led_ps.bit")
-ftga_ctl.remove_firmware("kv260_blinking_led_ps.bit.bin")
-
-
-ftga_ctl.unload()
-#ftga_ctl.load_bin("kv260_sample_led1.bit.bin")
-ftga_ctl.load("kv260_sample_led1")
+fpga_ctl.unload()
+fpga_ctl.load("k26-starter-kits")
