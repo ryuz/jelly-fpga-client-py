@@ -15,19 +15,20 @@ service JellyFpgaControl {
     rpc DtsToDtb ( DtsToDtbRequest ) returns (DtsToDtbResponse);
     rpc BitstreamToBin ( BitstreamToBinRequest ) returns (BoolResponse);
 
-    rpc OpenMmap (OpenMmapRequest) returns (OpenResponse);
-    rpc OpenUio (OpenUioRequest) returns (OpenResponse);
-    rpc OpenUdmabuf (OpenUdmabufRequest) returns (OpenResponse);
-    rpc Close (CloseRequest) returns (BoolResponse);
+    rpc OpenMmap     (OpenMmapRequest)    returns (OpenResponse);
+    rpc OpenUio      (OpenUioRequest)     returns (OpenResponse);
+    rpc OpenUdmabuf  (OpenUdmabufRequest) returns (OpenResponse);
+    rpc Close        (CloseRequest)       returns (BoolResponse);
+    rpc Subclone     (SubcloneRequest)    returns (OpenResponse);
 
-    rpc WriteMemU    (WriteMemURequest)  returns (BoolResponse);
-    rpc WriteMemI    (WriteMemIRequest)  returns (BoolResponse);
-    rpc ReadMemU     (ReadMemRequest)    returns (ReadUResponse);
-    rpc ReadMemI     (ReadMemRequest)    returns (ReadIResponse);
-    rpc WriteRegU    (WriteRegURequest)  returns (BoolResponse);
-    rpc WriteRegI    (WriteRegIRequest)  returns (BoolResponse);
-    rpc ReadRegU     (ReadRegRequest)    returns (ReadUResponse);
-    rpc ReadRegI     (ReadRegRequest)    returns (ReadIResponse);
+    rpc WriteMemU    (WriteMemURequest)   returns (BoolResponse);
+    rpc WriteMemI    (WriteMemIRequest)   returns (BoolResponse);
+    rpc ReadMemU     (ReadMemRequest)     returns (ReadUResponse);
+    rpc ReadMemI     (ReadMemRequest)     returns (ReadIResponse);
+    rpc WriteRegU    (WriteRegURequest)   returns (BoolResponse);
+    rpc WriteRegI    (WriteRegIRequest)   returns (BoolResponse);
+    rpc ReadRegU     (ReadRegRequest)     returns (ReadUResponse);
+    rpc ReadRegI     (ReadRegRequest)     returns (ReadIResponse);
 
     rpc WriteMemF32 (WriteMemF32Request)  returns (BoolResponse);
     rpc WriteMemF64 (WriteMemF64Request)  returns (BoolResponse);
@@ -126,6 +127,13 @@ message OpenResponse {
 
 message CloseRequest {
     uint32 id = 1;
+}
+
+message SubcloneRequest {
+    uint32 id = 1;
+    uint64 offset = 2;
+    uint64 size = 3;
+    uint64 unit = 4;
 }
 
 message WriteMemURequest {

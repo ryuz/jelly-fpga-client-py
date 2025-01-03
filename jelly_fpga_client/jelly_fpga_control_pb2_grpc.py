@@ -99,6 +99,11 @@ class JellyFpgaControlStub(object):
                 request_serializer=jelly__fpga__control__pb2.CloseRequest.SerializeToString,
                 response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
                 _registered_method=True)
+        self.Subclone = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/Subclone',
+                request_serializer=jelly__fpga__control__pb2.SubcloneRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.OpenResponse.FromString,
+                _registered_method=True)
         self.WriteMemU = channel.unary_unary(
                 '/jelly_fpga_control.JellyFpgaControl/WriteMemU',
                 request_serializer=jelly__fpga__control__pb2.WriteMemURequest.SerializeToString,
@@ -267,6 +272,12 @@ class JellyFpgaControlServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Close(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Subclone(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -447,6 +458,11 @@ def add_JellyFpgaControlServicer_to_server(servicer, server):
                     servicer.Close,
                     request_deserializer=jelly__fpga__control__pb2.CloseRequest.FromString,
                     response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'Subclone': grpc.unary_unary_rpc_method_handler(
+                    servicer.Subclone,
+                    request_deserializer=jelly__fpga__control__pb2.SubcloneRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.OpenResponse.SerializeToString,
             ),
             'WriteMemU': grpc.unary_unary_rpc_method_handler(
                     servicer.WriteMemU,
@@ -890,6 +906,33 @@ class JellyFpgaControl(object):
             '/jelly_fpga_control.JellyFpgaControl/Close',
             jelly__fpga__control__pb2.CloseRequest.SerializeToString,
             jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Subclone(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/Subclone',
+            jelly__fpga__control__pb2.SubcloneRequest.SerializeToString,
+            jelly__fpga__control__pb2.OpenResponse.FromString,
             options,
             channel_credentials,
             insecure,

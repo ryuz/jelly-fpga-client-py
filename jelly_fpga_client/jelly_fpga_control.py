@@ -83,6 +83,12 @@ class JellyFpgaControl:
             return None
         return response.id
 
+    def subclone(self, id, offset, size, unit=0):
+        response = self.stub.Subclone(jelly_fpga_control_pb2.SubcloneRequest(id=id, offset=offset, size=size, unit=unit))
+        if not response.result:
+            return None
+        return response.id
+
     def close(self, id):
         response = self.stub.Close(jelly_fpga_control_pb2.CloseRequest(id=id))
         return response.result
