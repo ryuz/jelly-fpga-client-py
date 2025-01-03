@@ -6,9 +6,6 @@ from jelly_fpga_client import jelly_fpga_control
 # コマンドライン引数で指定した IP アドレスに接続
 target = sys.argv[1]
 print("target:", target)
-
-target = "10.72.141.82:50051"
-
 fpga_ctl = jelly_fpga_control.JellyFpgaControl(target)
 fpga_ctl.reset()
 
