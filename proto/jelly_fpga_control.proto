@@ -28,6 +28,18 @@ service JellyFpgaControl {
     rpc WriteRegI    (WriteRegIRequest)  returns (BoolResponse);
     rpc ReadRegU     (ReadRegRequest)    returns (ReadUResponse);
     rpc ReadRegI     (ReadRegRequest)    returns (ReadIResponse);
+
+    rpc WriteMemF32 (WriteMemF32Request)  returns (BoolResponse);
+    rpc WriteMemF64 (WriteMemF64Request)  returns (BoolResponse);
+    rpc ReadMemF32  (ReadMemRequest)  returns (ReadF32Response);
+    rpc ReadMemF64  (ReadMemRequest)  returns (ReadF64Response);
+    rpc WriteRegF32 (WriteRegF32Request)  returns (BoolResponse);
+    rpc WriteRegF64 (WriteRegF64Request)  returns (BoolResponse);
+    rpc ReadRegF32  (ReadRegRequest)  returns (ReadF32Response);
+    rpc ReadRegF64  (ReadRegRequest)  returns (ReadF64Response);
+
+    rpc MemCopyTo   (MemCopyToRequest)   returns (BoolResponse);
+    rpc MemCopyFrom (MemCopyFromRequest) returns (MemCopyFromResponse);
 }
 
 message Empty {
@@ -164,5 +176,58 @@ message ReadUResponse {
 message ReadIResponse {
     bool  result = 1;
     int64 data = 2;
+}
+
+
+message WriteMemF32Request {
+    uint32 id = 1;
+    uint64 offset = 2;
+    float  data = 3;
+}
+
+message WriteMemF64Request {
+    uint32 id = 1;
+    uint64 offset = 2;
+    double data = 3;
+}
+
+message ReadF32Response {
+    bool  result = 1;
+    float data = 2;
+}
+
+message ReadF64Response {
+    bool  result = 1;
+    double data = 2;
+}
+
+message WriteRegF32Request {
+    uint32 id = 1;
+    uint64 reg = 2;
+    float  data = 3;
+}
+
+message WriteRegF64Request {
+    uint32 id = 1;
+    uint64 reg = 2;
+    double data = 3;
+}
+
+
+message MemCopyToRequest {
+    uint32 id = 1;
+    uint64 offset = 2;
+    bytes data = 3;
+}
+
+message MemCopyFromRequest {
+    uint32 id = 1;
+    uint64 offset = 2;
+    uint64 size = 3;
+}
+
+message MemCopyFromResponse {
+    bool  result = 1;
+    bytes data = 2;
 }
 

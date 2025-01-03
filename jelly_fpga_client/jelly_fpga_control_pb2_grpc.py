@@ -139,6 +139,56 @@ class JellyFpgaControlStub(object):
                 request_serializer=jelly__fpga__control__pb2.ReadRegRequest.SerializeToString,
                 response_deserializer=jelly__fpga__control__pb2.ReadIResponse.FromString,
                 _registered_method=True)
+        self.WriteMemF32 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/WriteMemF32',
+                request_serializer=jelly__fpga__control__pb2.WriteMemF32Request.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
+        self.WriteMemF64 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/WriteMemF64',
+                request_serializer=jelly__fpga__control__pb2.WriteMemF64Request.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
+        self.ReadMemF32 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/ReadMemF32',
+                request_serializer=jelly__fpga__control__pb2.ReadMemRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.ReadF32Response.FromString,
+                _registered_method=True)
+        self.ReadMemF64 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/ReadMemF64',
+                request_serializer=jelly__fpga__control__pb2.ReadMemRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.ReadF64Response.FromString,
+                _registered_method=True)
+        self.WriteRegF32 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/WriteRegF32',
+                request_serializer=jelly__fpga__control__pb2.WriteRegF32Request.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
+        self.WriteRegF64 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/WriteRegF64',
+                request_serializer=jelly__fpga__control__pb2.WriteRegF64Request.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
+        self.ReadRegF32 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/ReadRegF32',
+                request_serializer=jelly__fpga__control__pb2.ReadRegRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.ReadF32Response.FromString,
+                _registered_method=True)
+        self.ReadRegF64 = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/ReadRegF64',
+                request_serializer=jelly__fpga__control__pb2.ReadRegRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.ReadF64Response.FromString,
+                _registered_method=True)
+        self.MemCopyTo = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/MemCopyTo',
+                request_serializer=jelly__fpga__control__pb2.MemCopyToRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
+        self.MemCopyFrom = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/MemCopyFrom',
+                request_serializer=jelly__fpga__control__pb2.MemCopyFromRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.MemCopyFromResponse.FromString,
+                _registered_method=True)
 
 
 class JellyFpgaControlServicer(object):
@@ -270,6 +320,66 @@ class JellyFpgaControlServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def WriteMemF32(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def WriteMemF64(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ReadMemF32(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ReadMemF64(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def WriteRegF32(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def WriteRegF64(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ReadRegF32(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ReadRegF64(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def MemCopyTo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def MemCopyFrom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_JellyFpgaControlServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -377,6 +487,56 @@ def add_JellyFpgaControlServicer_to_server(servicer, server):
                     servicer.ReadRegI,
                     request_deserializer=jelly__fpga__control__pb2.ReadRegRequest.FromString,
                     response_serializer=jelly__fpga__control__pb2.ReadIResponse.SerializeToString,
+            ),
+            'WriteMemF32': grpc.unary_unary_rpc_method_handler(
+                    servicer.WriteMemF32,
+                    request_deserializer=jelly__fpga__control__pb2.WriteMemF32Request.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'WriteMemF64': grpc.unary_unary_rpc_method_handler(
+                    servicer.WriteMemF64,
+                    request_deserializer=jelly__fpga__control__pb2.WriteMemF64Request.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'ReadMemF32': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReadMemF32,
+                    request_deserializer=jelly__fpga__control__pb2.ReadMemRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.ReadF32Response.SerializeToString,
+            ),
+            'ReadMemF64': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReadMemF64,
+                    request_deserializer=jelly__fpga__control__pb2.ReadMemRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.ReadF64Response.SerializeToString,
+            ),
+            'WriteRegF32': grpc.unary_unary_rpc_method_handler(
+                    servicer.WriteRegF32,
+                    request_deserializer=jelly__fpga__control__pb2.WriteRegF32Request.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'WriteRegF64': grpc.unary_unary_rpc_method_handler(
+                    servicer.WriteRegF64,
+                    request_deserializer=jelly__fpga__control__pb2.WriteRegF64Request.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'ReadRegF32': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReadRegF32,
+                    request_deserializer=jelly__fpga__control__pb2.ReadRegRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.ReadF32Response.SerializeToString,
+            ),
+            'ReadRegF64': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReadRegF64,
+                    request_deserializer=jelly__fpga__control__pb2.ReadRegRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.ReadF64Response.SerializeToString,
+            ),
+            'MemCopyTo': grpc.unary_unary_rpc_method_handler(
+                    servicer.MemCopyTo,
+                    request_deserializer=jelly__fpga__control__pb2.MemCopyToRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'MemCopyFrom': grpc.unary_unary_rpc_method_handler(
+                    servicer.MemCopyFrom,
+                    request_deserializer=jelly__fpga__control__pb2.MemCopyFromRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.MemCopyFromResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -946,6 +1106,276 @@ class JellyFpgaControl(object):
             '/jelly_fpga_control.JellyFpgaControl/ReadRegI',
             jelly__fpga__control__pb2.ReadRegRequest.SerializeToString,
             jelly__fpga__control__pb2.ReadIResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def WriteMemF32(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/WriteMemF32',
+            jelly__fpga__control__pb2.WriteMemF32Request.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def WriteMemF64(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/WriteMemF64',
+            jelly__fpga__control__pb2.WriteMemF64Request.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ReadMemF32(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/ReadMemF32',
+            jelly__fpga__control__pb2.ReadMemRequest.SerializeToString,
+            jelly__fpga__control__pb2.ReadF32Response.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ReadMemF64(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/ReadMemF64',
+            jelly__fpga__control__pb2.ReadMemRequest.SerializeToString,
+            jelly__fpga__control__pb2.ReadF64Response.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def WriteRegF32(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/WriteRegF32',
+            jelly__fpga__control__pb2.WriteRegF32Request.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def WriteRegF64(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/WriteRegF64',
+            jelly__fpga__control__pb2.WriteRegF64Request.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ReadRegF32(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/ReadRegF32',
+            jelly__fpga__control__pb2.ReadRegRequest.SerializeToString,
+            jelly__fpga__control__pb2.ReadF32Response.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ReadRegF64(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/ReadRegF64',
+            jelly__fpga__control__pb2.ReadRegRequest.SerializeToString,
+            jelly__fpga__control__pb2.ReadF64Response.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def MemCopyTo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/MemCopyTo',
+            jelly__fpga__control__pb2.MemCopyToRequest.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def MemCopyFrom(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/MemCopyFrom',
+            jelly__fpga__control__pb2.MemCopyFromRequest.SerializeToString,
+            jelly__fpga__control__pb2.MemCopyFromResponse.FromString,
             options,
             channel_credentials,
             insecure,
