@@ -11,7 +11,7 @@ from jelly_fpga_client import jelly_fpga_control_pb2
 from jelly_fpga_client import jelly_fpga_control_pb2_grpc
 
 class JellyFpgaControl:
-    def __init__(self, target="localhost:50051"):
+    def __init__(self, target="localhost:8051"):
         self.channel = grpc.insecure_channel(target)
         self.stub = jelly_fpga_control_pb2_grpc.JellyFpgaControlStub(self.channel)
 
