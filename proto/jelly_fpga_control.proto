@@ -7,6 +7,9 @@ service JellyFpgaControl {
     rpc Load   ( LoadRequest ) returns (LoadResponse);
     rpc Unload ( UnloadRequest ) returns (BoolResponse);
 
+    rpc RegisterAccel   ( RegisterAccelRequest ) returns (BoolResponse);
+    rpc UnregisterAccel ( UnregisterAccelRequest ) returns (BoolResponse);
+
     rpc UploadFirmware ( stream UploadFirmwareRequest ) returns (BoolResponse);
     rpc RemoveFirmware ( RemoveFirmwareRequest ) returns (BoolResponse);
     rpc LoadBitstream  ( LoadBitstreamRequest ) returns (BoolResponse);
@@ -67,6 +70,18 @@ message LoadResponse {
 
 message UnloadRequest {
     int32 slot = 1;
+}
+
+message RegisterAccelRequest {
+    string accel_name = 1;
+    string bin_file = 2;
+    string dtbo_file = 3;
+    string json_file = 4;  // optional, empty string if not provided
+    bool overwrite = 5;
+}
+
+message UnregisterAccelRequest {
+    string accel_name = 1;
 }
 
 message UploadFirmwareRequest {

@@ -49,6 +49,16 @@ class JellyFpgaControlStub(object):
                 request_serializer=jelly__fpga__control__pb2.UnloadRequest.SerializeToString,
                 response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
                 _registered_method=True)
+        self.RegisterAccel = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/RegisterAccel',
+                request_serializer=jelly__fpga__control__pb2.RegisterAccelRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
+        self.UnregisterAccel = channel.unary_unary(
+                '/jelly_fpga_control.JellyFpgaControl/UnregisterAccel',
+                request_serializer=jelly__fpga__control__pb2.UnregisterAccelRequest.SerializeToString,
+                response_deserializer=jelly__fpga__control__pb2.BoolResponse.FromString,
+                _registered_method=True)
         self.UploadFirmware = channel.stream_unary(
                 '/jelly_fpga_control.JellyFpgaControl/UploadFirmware',
                 request_serializer=jelly__fpga__control__pb2.UploadFirmwareRequest.SerializeToString,
@@ -227,6 +237,18 @@ class JellyFpgaControlServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Unload(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def RegisterAccel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UnregisterAccel(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -440,6 +462,16 @@ def add_JellyFpgaControlServicer_to_server(servicer, server):
             'Unload': grpc.unary_unary_rpc_method_handler(
                     servicer.Unload,
                     request_deserializer=jelly__fpga__control__pb2.UnloadRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'RegisterAccel': grpc.unary_unary_rpc_method_handler(
+                    servicer.RegisterAccel,
+                    request_deserializer=jelly__fpga__control__pb2.RegisterAccelRequest.FromString,
+                    response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
+            ),
+            'UnregisterAccel': grpc.unary_unary_rpc_method_handler(
+                    servicer.UnregisterAccel,
+                    request_deserializer=jelly__fpga__control__pb2.UnregisterAccelRequest.FromString,
                     response_serializer=jelly__fpga__control__pb2.BoolResponse.SerializeToString,
             ),
             'UploadFirmware': grpc.stream_unary_rpc_method_handler(
@@ -683,6 +715,60 @@ class JellyFpgaControl(object):
             target,
             '/jelly_fpga_control.JellyFpgaControl/Unload',
             jelly__fpga__control__pb2.UnloadRequest.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def RegisterAccel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/RegisterAccel',
+            jelly__fpga__control__pb2.RegisterAccelRequest.SerializeToString,
+            jelly__fpga__control__pb2.BoolResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UnregisterAccel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/jelly_fpga_control.JellyFpgaControl/UnregisterAccel',
+            jelly__fpga__control__pb2.UnregisterAccelRequest.SerializeToString,
             jelly__fpga__control__pb2.BoolResponse.FromString,
             options,
             channel_credentials,

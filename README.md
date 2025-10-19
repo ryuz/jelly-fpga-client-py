@@ -56,7 +56,7 @@ pip install .
 from jelly_fpga_client import jelly_fpga_control
 
 # サーバーに接続（デフォルトはlocalhost:8051）
-fpga_ctl = jelly_fpga_control.JellyFpgaControl("10.72.141.82:8051")
+fpga_ctl = jelly_fpga_control.JellyFpgaControl("127.0.0.1:8051")
 
 # FPGAをリセット
 fpga_ctl.reset()
@@ -100,7 +100,7 @@ import time
 from jelly_fpga_client import jelly_fpga_control
 
 # サーバーに接続
-target = "10.72.141.82:8051"  # または sys.argv[1]
+target = "127.0.0.1:8051"  # または sys.argv[1]
 fpga_ctl = jelly_fpga_control.JellyFpgaControl(target)
 fpga_ctl.reset()
 
@@ -195,7 +195,7 @@ python test_udmabuf.py <server_address:port>
 
 例：
 ```bash
-python test_blinking_led.py 10.72.141.82:8051
+python test_blinking_led.py 127.0.0.1:8051
 ```
 
 ## 開発

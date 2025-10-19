@@ -27,6 +27,20 @@ class JellyFpgaControl:
         response = self.stub.Unload(jelly_fpga_control_pb2.UnloadRequest(slot=slot))
         return response.result
 
+    def register_accel(self, accel_name, bin_file, dtbo_file, json_file="", overwrite=True):
+        response = self.stub.RegisterAccel(jelly_fpga_control_pb2.RegisterAccelRequest(
+            accel_name=accel_name,
+            bin_file=bin_file,
+            dtbo_file=dtbo_file,
+            json_file=json_file,
+            overwrite=overwrite
+        ))
+        return response.result
+
+    def unregister_accel(self, accel_name):
+        response = self.stub.UnregisterAccel(jelly_fpga_control_pb2.UnregisterAccelRequest(accel_name=accel_name))
+        return response.result
+
     def upload_firmware(self, name, data, chunk_size=2*1024*1024):
         def generate_message(name, data):
             while len(data) > 0:
