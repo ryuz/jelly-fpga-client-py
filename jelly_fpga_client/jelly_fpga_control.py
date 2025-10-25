@@ -15,6 +15,10 @@ class JellyFpgaControl:
         self.channel = grpc.insecure_channel(target)
         self.stub = jelly_fpga_control_pb2_grpc.JellyFpgaControlStub(self.channel)
 
+    def get_version(self):
+        response = self.stub.GetVersion(jelly_fpga_control_pb2.Empty())
+        return response.version
+
     def reset(self):
         response = self.stub.Reset(jelly_fpga_control_pb2.ResetRequest())
         return response.result
